@@ -8,7 +8,7 @@ Ce dépôt contient un projet fait à l'IUT de Lannion au premier semestre.
 Il s'agit d'un site web développé en langage HTML et CSS.
 Ce site est sur le thème des JO de Paris 2024.
 Ce projet est un projet de groupe fait en collaboration avec @NiloSaiko, @luffydemon et @alm122606.
-J'ai pour ma part, dévellopé la page "page_sportif.html" et le fichier "style_esme.css".
+J'ai pour ma part, dévellopé la page "page_sportif.html", le pied de page présent sur toutes les pages et le fichier "style_esme.css".
 
 ## Contenu
 
