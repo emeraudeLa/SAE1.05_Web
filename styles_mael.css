@@ -1,0 +1,546 @@
+/* Configuration du conteneur principal */
+main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    position: relative;
+}
+
+/* Styles de base des articles */
+article {
+    background: #77B3D9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+}
+
+article::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.3s ease;
+    z-index: 0;
+}
+
+article:nth-child(1)::before {
+    background-image: url('images/image_dicipline/bmx.jpg');
+}
+
+article:nth-child(2)::before {
+    background-image: url('images/image_dicipline/OIP.jpg');
+}
+
+article:nth-child(3)::before {
+    background-image: url('images/image_dicipline/images.jpg');
+}
+
+article:nth-child(4)::before {
+    background-image: url('images/image_dicipline/oldbmx.jpg');
+}
+
+article:nth-child(5)::before {
+    background-image: url('images/image_dicipline/origine.jpg');
+}
+
+article:hover::before {
+    opacity: 0;
+}
+
+/* Effet hover sur les articles non-expandus */
+article:hover:not([data-expanded="true"]) {
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Contenu de l'article au survol */
+article:hover:not([data-expanded="true"]) section {
+    opacity: 1;
+    max-height: 60%;
+    background: #77B3D9;
+    padding: 1.5rem;
+    z-index: 1;
+}
+
+
+/* État par défaut du contenu */
+article > section {
+    opacity: 0;
+    max-height: 0;
+    transition: all 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+    background: #77B3D9;
+    z-index: 1;
+}
+
+
+/* Styles des articles expandus */
+article[data-expanded="true"]::before {
+    opacity: 0;
+}
+
+article[data-expanded="true"] {
+    grid-column: 1 / span 2;
+    z-index: 3;
+    height: auto;
+    background: #77B3D9;
+}
+
+article[data-expanded="true"] > section {
+    opacity: 1;
+    max-height: none;
+    position: relative;
+    padding: 2rem;
+}
+
+/* Grid pour le contenu expandé  */
+article[data-expanded="true"] .article-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    gap: 2rem;
+    align-items: start; 
+}
+
+article[data-expanded="true"] .article-text {
+    grid-column: 1 / 2; 
+}
+
+article[data-expanded="true"] .article-image {
+    grid-column: 2 / 3;  
+    width: 100%;  
+}
+
+article[data-expanded="true"] .article-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Styles de l'en-tête */
+header {
+    padding: 1.5rem;
+    background: #252359;
+    position: relative;
+    z-index: 1;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* Styles des images */
+figure img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Styles des tableaux */
+section:has(table) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+article:last-child section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+/* Style de base des tableaux */
+table {
+    width: 80%;
+    border-collapse: separate;
+    background-color: #252359;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Style de l'en-tête du tableau */
+thead tr {
+    background: #252359;
+    color: white;
+}
+
+/* Style des cellules */
+th, td {
+    padding: 0.5rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Style pour les images dans les tableaux */
+td img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Style pour les lignes du corps du tableau */
+tbody tr {
+    background-color: white;
+}
+
+/* Effet hover sur les lignes du tableau */
+tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Style des sections contenant les tableaux */
+article:last-child section section {
+    background-color: #77B3D9;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Style des titres h3 dans les sections de tableaux */
+article:last-child section section h3 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+th, td {
+    padding: 0.5rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Texte au survol */
+article:hover:not([data-expanded="true"]) p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Styles du footer */
+footer {
+    background-color: #252359;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial,sans-serif;
+}
+
+footer div {
+    margin-bottom: 20px;
+}
+
+footer div:nth-child(3) a {
+    text-decoration: none;
+    color: #D90D1E;
+}
+
+footer div a {
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer div:first-child a {
+    margin: 0;
+    text-decoration: none;
+    color: #77B3D9;
+}
+
+footer div:first-child a:hover {
+    background-color: white;
+    color: #252359;
+}
+
+footer img {
+    width: auto;
+    height: 24px;
+}
+
+footer div:last-child a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+
+/* Media Query pour les tablettes */
+@media screen and (max-width: 960px) {
+    /* Ajustement du conteneur principal */
+    main {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    /* Ajustement des articles */
+    article[data-expanded="true"] {
+        grid-column: 1;
+    }
+
+    /* Ajustement de la grille dans les articles expandés */
+    article[data-expanded="true"] .article-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    article[data-expanded="true"] .article-text,
+    article[data-expanded="true"] .article-image {
+        grid-column: 1;
+    }
+
+    /* Ajustement des images */
+    figure img {
+        height: 200px;
+    }
+
+    /* Ajustement des tableaux */
+    table {
+        width: 95%;
+    }
+
+    /* Ajustement du padding des articles */
+    article[data-expanded="true"] > section {
+        padding: 1.5rem;
+    }
+}
+
+/* Media Query pour les mobiles */
+@media screen and (max-width: 640px) {
+    /* Réduction du padding général */
+    main {
+        padding: 0.5rem;
+        gap: 1rem;
+    }
+
+    /* Ajustements pour le menu burger */
+    .menu-burger {
+        width: 70%; /* Menu plus large sur tablette */
+    }
+
+    .menu-burger a {
+        font-size: 16px; /* Texte légèrement plus petit */
+    }
+
+    .burger-icon {
+        right: 30px; /* Décalage moins important */
+    }
+
+    /* Ajustement des articles */
+    article {
+        min-height: 200px;
+    }
+
+    /* Réduction de la taille des titres */
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    header {
+        padding: 1rem;
+    }
+
+    /* Ajustement du contenu des articles */
+    article[data-expanded="true"] > section {
+        padding: 1rem;
+    }
+
+    /* Ajustement des tableaux */
+    table {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 0.3rem;
+    }
+
+    td img {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Ajustement des images */
+    figure img {
+        height: 150px;
+    }
+
+    .menu-burger {
+        width: 100%; /* Menu plein écran sur mobile */
+    }
+
+    .menu-burger a {
+        font-size: 14px; /* Texte encore plus petit */
+    }
+
+    .menu-burger li {
+        margin: 10px 0; /* Espacement réduit entre les éléments */
+    }
+
+    .burger-icon {
+        right: 15px; /* Bouton plus proche du bord */
+        top: 15px;
+        width: 25px; /* Bouton légèrement plus petit */
+        height: 25px;
+    }
+
+    .burger-icon div {
+        height: 3px; /* Lignes plus fines */
+        margin: 5px 0;
+    }
+
+    .nav-header {
+        height: 50px; /* Header plus petit sur mobile */
+    }
+
+    /* Ajustement du padding du body en conséquence */
+    body {
+        padding-top: 50px;
+    }
+
+    /* Ajustement du texte */
+    p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    article:hover:not([data-expanded="true"]) p {
+        font-size: 1rem;
+    }
+
+    /* Ajustement des marges pour les tableaux de médailles */
+    article:last-child section section {
+        padding: 0.5rem;
+    }
+
+    /* Désactivation de certains effets hover sur mobile */
+    article:hover:not([data-expanded="true"]) {
+        transform: none;
+    }
+}
+
+
+
+/* Configuration du menus burger ajouté au dernier moment par les equipiers */
+
+.nav-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    background-color: #D90D1E;
+    height: 30px;
+}
+
+.burger-icon {
+    position: fixed;
+    top: 20px;
+    right: 60px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 2100;
+}
+
+.burger-icon div {
+    width: 100%;
+    height: 4px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.burger-icon.open div:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.burger-icon.open div:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-icon.open div:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+.menu-burger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1900;
+}
+
+.menu-burger.open {
+    transform: translateX(0);
+}
+
+.menu-burger ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.menu-burger li {
+    margin: 15px 0;
+    list-style-type: none;
+}
+
+.menu-burger a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.menu-burger a:hover {
+    color: #FFD700;
+}
+
+/* Ajustement pour le contenu principal */
+body {
+    padding-top: 60px; /* Hauteur du header fixe */
+}
+
+/* Correction pour les en-têtes d'articles */
+.article-header {
+    position: relative;
+    z-index: 1;
+    background: #252359;
+}
+
+/* Ajustement des z-index pour les articles */
+article[data-expanded="true"] {
+    z-index: 1500;
+}
